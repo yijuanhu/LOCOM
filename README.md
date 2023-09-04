@@ -2,7 +2,7 @@
 
 A logistic regression model for testing differential abundance in compositional microbiome data
 
-The LOCOM package provides the locom function for testing differential abundance of individual taxa (or OTUs) that is based on the log ratio of relative abundances between each taxon and a reference taxon. It also provides a global test of whether there is any differential abundance in a microbiome community. The tests accommodate continuous and discrete (binary) traits of interest and allows adjustment of confounders.
+The LOCOM package provides tests of differential abundance at individual taxa (or OTUs) and in a microbial community as a whole, that is based on the log ratio of relative abundances between each taxon and a reference taxon. While the 'locom' function was developed to analyze one sequencing dataset, the newer 'Com2seq' function combines two sequencing datasets (e.g., from 16S marker-gene and shotgun metagenomic sequencing) for integrative analysis of differential abundance. All tests accommodate continuous, discrete (binary, categorical), and multivariate traits, and allows adjustment of confounders.
 
 ## Installation
 

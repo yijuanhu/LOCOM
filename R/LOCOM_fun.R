@@ -28,6 +28,7 @@
 #' @param filter.thresh a real value between 0 and 1; OTUs present in fewer than \code{filter.thresh} * 100\% samples are filtered out. The default is 0.2.
 #' @param n.cores the number of cores to be used for parallel computing. The default is 1.
 #' @param permute a logical value indicating whether to perform permutation. The default is TRUE. 
+#' @param verbose a logical value indicating whether to generate verbose output during the permutation process. Default is TRUE.
 #' @return A list consisting of
 #' \itemize{
 #'   \item effect.size - effect size at each OTU, i.e., beta_j,1 - median_j'=1,...J(beta_j',1)
@@ -83,7 +84,7 @@
 locom <- function(otu.table, Y, C = NULL,
                   fdr.nominal = 0.2, seed = NULL,
                   n.perm.max = NULL, n.rej.stop = 100, n.cores = 4,
-                  filter.thresh = 0.2, permute = TRUE){
+                  filter.thresh = 0.2, permute = TRUE, verbose = TRUE){
     
     
     Firth.thresh = 0.4
@@ -106,7 +107,7 @@ locom <- function(otu.table, Y, C = NULL,
     n.sam <- nrow(otu.table)
     w = which(colSums(otu.table>0)>= ceiling(filter.thresh * n.sam))
     if (length(w) < ncol(otu.table)) {
-        cat(paste(ncol(otu.table)-length(w), ' OTU(s) present in fewer than ', ceiling(filter.thresh * n.sam), ' samples are filtered out', sep=""), "\n")
+        if (verbose) message(paste(ncol(otu.table)-length(w), ' OTU(s) present in fewer than ', ceiling(filter.thresh * n.sam), ' samples are filtered out', sep=""))
         otu.table = otu.table[,w,drop=FALSE]
     }
     n.otu <- ncol(otu.table)
@@ -220,7 +221,7 @@ locom <- function(otu.table, Y, C = NULL,
             
             perm.mat <- t(shuffleSet(n.sam, n.perm.block)) - 1
             
-            cat("permutations:", n.perm + 1, "\n")
+            if (verbose) message(paste("permutations:", n.perm + 1))
             
             if (n.cores > 1) {
                 

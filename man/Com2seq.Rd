@@ -16,7 +16,8 @@ Com2seq(
   n.perm.max = NULL,
   n.rej.stop = 100,
   n.cores = 4,
-  filter.thresh = 0.2
+  filter.thresh = 0.2,
+  verbose = TRUE
 )
 }
 \arguments{
@@ -49,6 +50,8 @@ default is 100.}
 \item{n.cores}{the number of cores to be used for parallel computing. The default is 1.}
 
 \item{filter.thresh}{a real value between 0 and 1; OTUs present in fewer than \code{filter.thresh} * 100\% samples are filtered out. The default is 0.2.}
+
+\item{verbose}{a logical value indicating whether to generate verbose output during the permutation process. Default is TRUE.}
 }
 \value{
 A list consisting of

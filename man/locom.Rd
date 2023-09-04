@@ -14,7 +14,8 @@ locom(
   n.rej.stop = 100,
   n.cores = 4,
   filter.thresh = 0.2,
-  permute = TRUE
+  permute = TRUE,
+  verbose = TRUE
 )
 }
 \arguments{
@@ -43,6 +44,8 @@ default is 100.}
 \item{filter.thresh}{a real value between 0 and 1; OTUs present in fewer than \code{filter.thresh} * 100\% samples are filtered out. The default is 0.2.}
 
 \item{permute}{a logical value indicating whether to perform permutation. The default is TRUE.}
+
+\item{verbose}{a logical value indicating whether to generate verbose output during the permutation process. Default is TRUE.}
 }
 \value{
 A list consisting of

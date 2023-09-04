@@ -30,6 +30,7 @@
 #'   default is 100.
 #' @param n.cores the number of cores to be used for parallel computing. The default is 1.
 #' @param filter.thresh a real value between 0 and 1; OTUs present in fewer than \code{filter.thresh} * 100\% samples are filtered out. The default is 0.2.
+#' @param verbose a logical value indicating whether to generate verbose output during the permutation process. Default is TRUE.
 #' @return A list consisting of
 #' \itemize{
 #'   \item effect.size.wc - effect size at each taxon, i.e., beta_j,1 - median_j'=1,...J (beta_j',1), based on the count weight
@@ -85,7 +86,7 @@
 Com2seq <- function(table1, table2, Y1, Y2, C1 = NULL, C2 = NULL,  
                           fdr.nominal = 0.2, seed = NULL,
                           n.perm.max = NULL, n.rej.stop = 100, n.cores = 4,
-                          filter.thresh = 0.2) {
+                          filter.thresh = 0.2, verbose = TRUE) {
     
     Firth.thresh = 0.4
     tol = 1e-6
@@ -109,6 +110,7 @@ Com2seq <- function(table1, table2, Y1, Y2, C1 = NULL, C2 = NULL,
     }
     
     # detect whether the data are relative abundances
+    
     if (mean(rowSums(table1)) < 10 | mean(rowSums(table2)) < 10) {
         we.only = TRUE
     } else {
@@ -385,7 +387,7 @@ Com2seq <- function(table1, table2, Y1, Y2, C1 = NULL, C2 = NULL,
             perm.mat2 <- perm.mat2 -1
         }
         
-        cat("permutations:", n.perm + 1, "\n")
+        if (verbose) message(paste("permutations:", n.perm + 1))
         
         if (n.cores > 1) {
             
@@ -529,7 +531,7 @@ Com2seq <- function(table1, table2, Y1, Y2, C1 = NULL, C2 = NULL,
     # ------------------------
     
     if (n.trait == 1) {
-        beta.all.we <- cbind(beta.we[1,], beta.perm.we[1,,])
+        beta.all.we <- cbind(beta.we[1,], beta.perm.we[1,,1:n.perm])
     } else {
         beta.all.we <- cbind(pmin.taxa.we, pnullmin.taxa.we)  # 148 1001 
     }
@@ -540,7 +542,7 @@ Com2seq <- function(table1, table2, Y1, Y2, C1 = NULL, C2 = NULL,
     
     if (!we.only) {
         if (n.trait == 1) {
-            beta.all.wc <- cbind(beta.wc[1,], beta.perm.wc[1,,])
+            beta.all.wc <- cbind(beta.wc[1,], beta.perm.wc[1,,1:n.perm])
         } else {
             beta.all.wc <- cbind(pmin.taxa.wc, pnullmin.taxa.wc)
         }
