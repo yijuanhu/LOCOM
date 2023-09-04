@@ -529,7 +529,7 @@ Com2seq <- function(table1, table2, Y1, Y2, C1 = NULL, C2 = NULL,
     # ------------------------
     
     if (n.trait == 1) {
-        beta.all.we <- cbind(beta.we[1,], beta.perm.we[1,,])
+        beta.all.we <- cbind(beta.we[1,], beta.perm.we[1,,1:n.perm])
     } else {
         beta.all.we <- cbind(pmin.taxa.we, pnullmin.taxa.we)  # 148 1001 
     }
@@ -540,7 +540,7 @@ Com2seq <- function(table1, table2, Y1, Y2, C1 = NULL, C2 = NULL,
     
     if (!we.only) {
         if (n.trait == 1) {
-            beta.all.wc <- cbind(beta.wc[1,], beta.perm.wc[1,,])
+            beta.all.wc <- cbind(beta.wc[1,], beta.perm.wc[1,,1:n.perm])
         } else {
             beta.all.wc <- cbind(pmin.taxa.wc, pnullmin.taxa.wc)
         }
