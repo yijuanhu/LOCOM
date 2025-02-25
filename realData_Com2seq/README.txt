@@ -1,0 +1,1 @@
+In each study folder, there is a data subfolder, and three R files: one preprocessing the data, one analyzing the overlapping portion of 16S and SMS data, and one analyzing the full data. The folder also contains the results and figures. 
