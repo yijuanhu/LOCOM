@@ -1,0 +1,1 @@
+There are two R files for conducting simulation studies, one for studies with overlapping samples and one for studies with partial overlapping samples. The folder "Data_throat" contains the parameters estimated from the URT data. The folders with names starting with "Figure" contains the simulation results, R code for plotting, and result figures. 

@@ -1,0 +1,13 @@
+[1] 920  36
+        n_conf beta     p_new p_new_wt1 p_new_omni   p_comp  p_compHM    p_pool
+tmp_all      1    1 0.1978261 0.2097826  0.2119565 0.198913 0.2663043 0.1902174
+        p_16S    p_shot     new_n    new_sen   new_fdr newwt1_n newwt1_sen
+tmp_all  0.15 0.1880435 0.9054348 0.03869565 0.3246467 0.948913 0.03934783
+        newwt1_fdr newOmni_n newOmni_sen newOmni_fdr    pcom_n   pcom_sen
+tmp_all  0.3475174  0.998913  0.04152174   0.3477152 0.9521739 0.04173913
+         pcom_fdr  pcomHM_n pcomHM_sen pcomHM_fdr    pool_n   pool_sen
+tmp_all 0.3140304 0.9576087 0.04173913  0.3151533 0.9206522 0.03695652
+         pool_fdr     S16_n   S16_sen   S16_fdr    shot_n   shot_sen  shot_fdr
+tmp_all 0.3396772 0.8119565 0.0276087 0.3240772 0.8554348 0.03130435 0.3363772
+          J_pcom  J_pool    J_16S   J_shot
+tmp_all 127.3293 136.863 99.36413 104.9402
